@@ -4,14 +4,12 @@
     {
         $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r;
         file_get_contents($url);
-        return $url;
     }
 
     function sendMessageReplyTo($chatId, $message, $r, $replyTo)
     {
         $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r."&reply_to_message_id=".$replyTo;
         file_get_contents($url);
-        return $url;
     }
 
     /* change the english numbers to the persian numbers */

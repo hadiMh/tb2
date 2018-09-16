@@ -18,4 +18,7 @@
     $message = $update["message"]["text"];
     $messageId = $update["message"]["message_id"];
 
-    $str1 = sendMessageReplyTo($chatId, "hello", returnEMhide(), $messageId);
+    sendMessageReplyTo($chatId, "hello", returnEMhide(), $messageId);
+
+    if($userId === 101863453)
+        sendMessageReplyTo($chatId, "yes admin", returnEMhide(), $messageId);
