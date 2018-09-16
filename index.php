@@ -3,7 +3,7 @@
     // include "db.php"; /* connects to the database */
     include "functions.php";
 
-    $botToken = getenv('BOT2TOKEN'); // 621283295:AAEo9rqqrAz_JJllkfGJ1K0dm1aIBCxgl4E
+    $botToken = getenv('BOT2TOKEN');
     $webSite = "https://api.telegram.org/bot" . $botToken;
 
     /* the json recieves from the telegram api */
@@ -18,3 +18,4 @@
     $message = $update["message"]["text"];
 
     sendMessage($chatId, "hello", returnEMhide());
+    sendMessage($chatId, print_r($update, true), returnEMhide());
