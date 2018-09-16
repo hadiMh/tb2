@@ -3,7 +3,7 @@
     // include "db.php"; /* connects to the database */
     include "functions.php";
 
-    $targetGroupId = "-236657040";
+    $targetGroupId = -236657040;
 
     $botToken = getenv('BOT2TOKEN');
     $webSite = "https://api.telegram.org/bot" . $botToken;
