@@ -4,6 +4,7 @@
     {
         $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r;
         file_get_contents($url);
+        return $url;
     }
 
     /* change the english numbers to the persian numbers */
