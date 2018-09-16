@@ -7,8 +7,8 @@
     $webSite = "https://api.telegram.org/bot" . $botToken;
 
     /* the json recieves from the telegram api */
-    $updateJson = file_get_contents("php://input");
-    $update = json_decode($updateJson, TRUE);
+    $update = file_get_contents("php://input");
+    $update = json_decode($update, TRUE);
      
     /* save the recieved json data seperately */
     $name = $update['message']['from']['first_name'];
@@ -17,6 +17,6 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
 
-    $str1 = sendMessage($chatId, "hello", returnEMhide(), $updateJson);
+    $str1 = sendMessage($chatId, "hello", returnEMhide());
     sendMessage($chatId, print_r($str1, true), returnEMhide());
     sendMessage($chatId, print_r($update, true), returnEMhide());
