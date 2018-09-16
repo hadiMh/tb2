@@ -31,4 +31,6 @@
         }
     }
 
+    sendMessage($chatId, print_r($update, true), returnEMhide());
+
     sendMessage($chatId, "boo", returnEMhide());
