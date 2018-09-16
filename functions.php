@@ -1,8 +1,9 @@
 <?php
 
-    function sendMessage($chatId, $message, $r)
+    function sendMessage($chatId, $message, $r, $replyTo)
     {
         $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r;
+        if(isset($replyTo)) $url."&message=".$replyTo;
         file_get_contents($url);
         return $url;
     }
