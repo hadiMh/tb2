@@ -1,6 +1,6 @@
 <?php
 
-    include "db.php"; /* connects to the database */
+    // include "db.php"; /* connects to the database */
     include "functions.php";
 
     $targetGroupId = -1001306017183;
@@ -20,6 +20,8 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
     $messageId = $update["message"]["message_id"];
+    include "db.php"; /* connects to the database */
+
 
     // sendMessageReplyTo($chatId, "hello", returnEMhide(), $messageId);
 
