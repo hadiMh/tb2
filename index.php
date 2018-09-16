@@ -1,9 +1,10 @@
 <?php
 
-    // include "db.php"; /* connects to the database */
+    include "db.php"; /* connects to the database */
     include "functions.php";
 
     $targetGroupId = -1001306017183;
+    $adminId = 101863453;
 
     $botToken = getenv('BOT2TOKEN');
     $webSite = "https://api.telegram.org/bot" . $botToken;
@@ -28,9 +29,7 @@
     if($chatId === $targetGroupId) {
         if($message === "hello") {
             sendMessageReplyTo($chatId, "Hi, how you doing?", returnEMhide(), $messageId);
+        } else if($message === "log") {
+            sendMessageReplyTo($chatId, "You have had 3 critics at all.", returnEMhide(), $messageId);
         }
     }
-
-    sendMessage($chatId, print_r($update, true), returnEMhide());
-
-    sendMessage($chatId, "boo", returnEMhide());
