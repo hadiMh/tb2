@@ -1,6 +1,6 @@
 <?php
 
-    include "db.php"; /* connects to the database */
+    // include "db.php"; /* connects to the database */
     include "functions.php";
 
     $botToken = getenv('BOT2TOKEN'); // 621283295:AAEo9rqqrAz_JJllkfGJ1K0dm1aIBCxgl4E
