@@ -30,3 +30,5 @@
             sendMessageReplyTo($chatId, "Hi, how you doing?", returnEMhide(), $messageId);
         }
     }
+
+    sendMessage($chatId, "boo", returnEMhide());
