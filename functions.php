@@ -7,6 +7,13 @@
         return $url;
     }
 
+    function sendMessageReplyTo($chatId, $message, $r, $replyTo)
+    {
+        $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r."&reply_to_message_id=".$replyTo;
+        file_get_contents($url);
+        return $url;
+    }
+
     /* change the english numbers to the persian numbers */
     function enNumToFa($string) {
         return strtr($string, array('0'=>'۰', '1'=>'۱', '2'=>'۲', '3'=>'۳', '4'=>'۴', '5'=>'۵', '6'=>'۶', '7'=>'۷', '8'=>'۸', '9'=>'۹'));

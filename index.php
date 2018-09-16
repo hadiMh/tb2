@@ -16,7 +16,6 @@
     $username = $update["message"]["from"]["username"];
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
+    $messageId = $update["message"]["message_id"];
 
-    $str1 = sendMessage($chatId, "hello", returnEMhide());
-    sendMessage($chatId, print_r($str1, true), returnEMhide());
-    sendMessage($chatId, print_r($update, true), returnEMhide());
+    $str1 = sendMessageReplyTo($chatId, "hello", returnEMhide(), $messageId);
