@@ -80,11 +80,11 @@
             }
         }
     /* change user status that where the user is in bots flow */
-    function setUserBotStatus($userId, $status) {
+    function setUserColumnData($userId, $column, $data) {
         global $connection;
 
         $query = "UPDATE users SET ";
-        $query .= "bot_status = '$status' ";
+        $query .= "$column = '$data' ";
         $query .= "WHERE user_id = '$userId' ";
         $result = mysqli_query($connection, $query);
         if(!$result) {
