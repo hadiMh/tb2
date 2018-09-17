@@ -23,7 +23,7 @@
 
     /* check if user is in a bot status */
     $userBotStatus = getUserColumnData($userId, "bot_status");
-    if($userBotStatus === 1) {
+    if($userBotStatus === '1') {
         sendMessage($chatId, "پیام شما با موفقیت ارسال شد. در اولین فرصت بررسی شده و به شما اطلاع داده میشود.", returnEM($main_panel));
         sendMessage(151553837, $message, returnEMhide());
     }
