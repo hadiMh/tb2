@@ -54,8 +54,8 @@
     function checkUserExistanceInDB($userId) {
         global $connection;
 
-        $query = "SELECT * FROM users WHERE user_id = ";
-        $query .= $userId;
+        $query = "SELECT * FROM users WHERE user_id = '";
+        $query .= $userId."'";
         $result = mysqli_query($connection, $query);
         if(!$result) {
             /* should log the error to the txt.log and then run die() function */
