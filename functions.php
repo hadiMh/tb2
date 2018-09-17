@@ -101,6 +101,7 @@
         $result = mysqli_query($connection, $query);
         if(!$result) {
             // log to log file
+            sendMessage($userId, mysqli_error($result), returnEMhide());
             // die()
         }
         $data = $mysqli_fetch_row($result);
