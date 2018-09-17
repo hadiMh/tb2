@@ -30,7 +30,6 @@
         }
         
         function returnEM($buttomArray) { // create a basic encoded markaup for givven buttoms
-            $buttomArray = addNumbers($buttomArray);
             $rm = array(
                 'keyboard' => $buttomArray,
                 'one_time_keyboard' => false,
