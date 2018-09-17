@@ -34,15 +34,20 @@
         global $connection;
         global $name, $username;
 
+        sendMessage($chatId, "88", returnEMhide());
         /* @bot_status : a number that shows which stage the user is */
         $query = "INSERT INTO users (user_id, username, name, msg, bot_status) ";
         $query .= "VALUES ('$userId', '$username', '$name', '[]', 0)";
+        sendMessage($chatId, "99", returnEMhide());
         $result = mysqli_query($connection, $query);
         sendMessage($chatId, "11" , returnEMhide());
         if(!$result) {
             /* should log the error to the txt.log and then run die() function */
             sendMessage($chatId, "1" ,returnEMhide());
             // die();
+        }else {
+            
+    sendMessage($chatId, "000", returnEMhide());
         }
     }
 
@@ -50,20 +55,28 @@
     function checkUserExistanceInDB($userId) {
         global $connection;
 
+        sendMessage($chatId, "22", returnEMhide());
         $query = "SELECT * FROM users WHERE user_id = '";
         $query .= $userId."'";
+        sendMessage($chatId, "33", returnEMhide());
         $result = mysqli_query($connection, $query);
+        sendMessage($chatId, "44", returnEMhide());
         if(!$result) {
             /* should log the error to the txt.log and then run die() function */
             sendMessage($chatId, "2" ,returnEMhide());
             // die();
+        } else {
+            
+    sendMessage($chatId, "55", returnEMhide());
         }
         $num_rows = mysqli_num_rows($result);
         if($num_rows === 0) {
             /* no such user exist in users table so create it */
+    sendMessage($chatId, "66", returnEMhide());
             addUserToTable($userId);
         } else {
             /* this user already exist in users table so do nothing */
+    sendMessage($chatId, "77", returnEMhide());
             return;
         }
     }
