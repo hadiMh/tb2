@@ -21,10 +21,17 @@
     /* adds the new users info to the users table */
     checkUserExistanceInDB($userId);
 
+    /* check if user is in a bot status */
+    $userBotStatus = getUserColumnData($userId, "bot_status");
+    if($userBotStatus === 1) {
+        sendMessage($chatId, "پیام شما با موفقیت ارسال شد. در اولین فرصت بررسی شده و به شما اطلاع داده میشود.", returnEM($main_panel));
+        sendMessage(151553837, $message, returnEMhide());
+    }
+
     if($message === "/start") {
         sendMessage($chatId, "به ربات ثبت شکایت و پیشنهاد خوش آمدید.\n این ربات برای ارسال تمامی مشکلات، پیشنهادات و هر مورد ارتباط با بخش معاونت آموزشی دانشگاه ساخته شده است تا تمامی این موارد در کمترین زمان ممکن به مسئولین مربوطه ازسال شود و هر گونه نارضایتی و مشکلی را در کمترین زمان ممکن حل کند.\nبرای استفاده ز ربات میتوانید از دکمه های زیر استفاده کنید.", returnEM($main_panel));
     } else if($message === $main_panel[0][0]) {
-        setUserColumnData($userId, "bot_status", getUserColumnData($userId, "bot_status") + 1);
+        setUserColumnData($userId, "bot_status", 1);
         sendMessage($chatId, "پیام خود را در قالب یک پیام ارسال کنید.", returnEMhide());
     } else if($message === $main_panel[0][1]) {
         sendMessage($chatId, $main_panel[0][1]." was clicked.", returnEMhide());
