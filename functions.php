@@ -92,3 +92,17 @@
             // die()
         }
     }
+
+    function getUserColumnData($userId, $column) {
+        global $connection;
+
+        $query = "SELECT $column FROM users ";
+        $query .= "WHERE user_id = '$userId' ";
+        $result = mysqli_query($connection, $query);
+        if(!$result) {
+            // log to log file
+            // die()
+        }
+        $data = $mysqli_fetch_row($result);
+        return $data[0];
+    }
