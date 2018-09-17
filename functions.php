@@ -33,6 +33,7 @@
     function addUserToTable($userId) {
         global $connection;
         global $name, $username;
+        global $chatId;
 
         sendMessage($chatId, "88", returnEMhide());
         /* @bot_status : a number that shows which stage the user is */
@@ -54,6 +55,7 @@
     /* check if user exist in db. if it doesn't exist it will be created in table with addUserToTable() function*/
     function checkUserExistanceInDB($userId) {
         global $connection;
+        global $chatId;
 
         sendMessage($chatId, "22", returnEMhide());
         $query = "SELECT * FROM users WHERE user_id = '";
