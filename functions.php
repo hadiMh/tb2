@@ -96,18 +96,14 @@
     function getUserColumnData($userId, $column) {
         global $connection;
 
-        $query = "SELECT '$column' FROM users ";
+        $query = "SELECT $column FROM users ";
         $query .= "WHERE user_id = '$userId' ";
-        sendMessage($userId, $query, returnEMhide());
         $result = mysqli_query($connection, $query);
         if(!$result) {
             // log to log file
-            sendMessage($userId, mysqli_error($result), returnEMhide());
             // die()
         }
         $data = mysqli_fetch_assoc($result);
-        sendMessage($userId, print_r($data, true), returnEMhide());
-        
-        sendMessage($userId, $data[$column], returnEMhide());
+
         return $data[$column];
     }
