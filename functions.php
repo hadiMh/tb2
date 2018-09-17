@@ -104,7 +104,7 @@
             sendMessage($userId, mysqli_error($result), returnEMhide());
             // die()
         }
-        $data = $mysqli_fetch_row($result);
+        $data = mysqli_fetch_row($result);
         sendMessage($userId, print_r($data, true), returnEMhide());
         return $data[0];
     }
