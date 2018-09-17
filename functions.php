@@ -44,7 +44,7 @@
         sendMessage($chatId, "11" , returnEMhide());
         if(!$result) {
             /* should log the error to the txt.log and then run die() function */
-            sendMessage($chatId, '00000000'.mysqli_error($con) ,returnEMhide());
+            sendMessage($chatId, '00000000'.mysqli_error($connection) ,returnEMhide());
             // die();
         }else {
             
