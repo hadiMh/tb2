@@ -46,6 +46,7 @@
         $result = mysqli_query($connection, $query);
         if(!$result) {
             /* should log the error to the txt.log and then run die() function */
+            sendMessageToCurrentUser("1" ,returnEMhide());
             // die();
         }
     }
@@ -59,6 +60,7 @@
         $result = mysqli_query($connection, $query);
         if(!$result) {
             /* should log the error to the txt.log and then run die() function */
+            sendMessageToCurrentUser("2" ,returnEMhide());
             // die();
         }
         $num_rows = mysqli_num_rows($result);
