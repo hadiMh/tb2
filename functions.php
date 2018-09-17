@@ -98,6 +98,7 @@
 
         $query = "SELECT '$column' FROM users ";
         $query .= "WHERE user_id = '$userId' ";
+        sendMessage($userId, $query, returnEMhide());
         $result = mysqli_query($connection, $query);
         if(!$result) {
             // log to log file
@@ -106,5 +107,7 @@
         }
         $data = mysqli_fetch_assoc($result);
         sendMessage($userId, print_r($data, true), returnEMhide());
+        
+        sendMessage($userId, $data[$column], returnEMhide());
         return $data[$column];
     }
