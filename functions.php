@@ -28,6 +28,17 @@
             );
             return json_encode($rm, true);
         }
+        
+        function returnEM($buttomArray) { // create a basic encoded markaup for givven buttoms
+            $buttomArray = addNumbers($buttomArray);
+            $rm = array(
+                'keyboard' => $buttomArray,
+                'one_time_keyboard' => false,
+                'resize_keyboard' => true,
+                'selective' => true
+            );
+            return json_encode($rm, true);
+        }
 
     /* add a user to the users table */
     function addUserToTable($userId) {
