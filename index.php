@@ -1,6 +1,7 @@
 <?php
 
     include "db.php"; /* connects to the database */
+    include "buttons.php";
     include "functions.php";
 
     $targetGroupId = -1001306017183;
