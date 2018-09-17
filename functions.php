@@ -37,8 +37,8 @@
         /* @bot_status : a number that shows which stage the user is */
         $query = "INSERT INTO users (user_id, username, name, msg, bot_status) ";
         $query .= "VALUES ('$userId', '$username', '$name', '[]', 0)";
-
         $result = mysqli_query($connection, $query);
+        sendMessage($chatId, "11" , returnEMhide());
         if(!$result) {
             /* should log the error to the txt.log and then run die() function */
             sendMessage($chatId, "1" ,returnEMhide());
