@@ -26,15 +26,15 @@
     } else if($message === $main_panel[0][0]) {
         sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
     } else if($message === $mail_panel[0][1]) {
-        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+        sendMessage($chatId, $main_panel[0][1]." was clicked.", returnEMhide());
     } else if($message === $mail_panel[0][2]) {
-        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+        sendMessage($chatId, $main_panel[0][2]." was clicked.", returnEMhide());
     } else if($message === $main_panel[1][0]) {
-        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+        sendMessage($chatId, $main_panel[1][0]." was clicked.", returnEMhide());
     } else if($message === $mail_panel[1][1]) {
-        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+        sendMessage($chatId, $main_panel[1][1]." was clicked.", returnEMhide());
     } else if($message === $mail_panel[1][2]) {
-        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+        sendMessage($chatId, $main_panel[1][2]." was clicked.", returnEMhide());
     }
 
     // sendMessageReplyTo($chatId, "hello", returnEMhide(), $messageId);
