@@ -1,10 +1,7 @@
 <?php
 
     include "db.php"; /* connects to the database */
-<<<<<<< HEAD
     include "buttons.php";
-=======
->>>>>>> parent of ad4b612... testing
     include "functions.php";
 
     $targetGroupId = -1001306017183;
@@ -24,7 +21,6 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
     $messageId = $update["message"]["message_id"];
-<<<<<<< HEAD
 
     sendMessage($chatId, "0", returnEMhide());
     checkUserExistanceInDB($userId);
@@ -34,8 +30,6 @@
     } else if($message == "/let"/* $main_panel[0][0] */) {
         sendMessage($chatId, "let was clicked.");
     }
-=======
->>>>>>> parent of ad4b612... testing
 
     // sendMessageReplyTo($chatId, "hello", returnEMhide(), $messageId);
 
