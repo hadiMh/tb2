@@ -1,11 +1,7 @@
 <?php
-
     include "db.php"; /* connects to the database */
     include "buttons.php";
     include "functions.php";
-
-    $targetGroupId = -1001306017183;
-    $adminId = 101863453;
 
     $botToken = getenv('BOT2TOKEN');
     $webSite = "https://api.telegram.org/bot" . $botToken;
@@ -22,9 +18,9 @@
     $message = $update["message"]["text"];
     $messageId = $update["message"]["message_id"];
 
-    sendMessage($chatId, "0", returnEMhide());
+    /* adds the new users info to the users table */
     checkUserExistanceInDB($userId);
-    sendMessage($chatId, "-1", returnEMhide());
+
     if($message === "/start") {
         sendMessage($chatId, "به ربات ثبت شکایت و پیشنهاد خوش آمدید.\n این ربات برای ارسال تمامی مشکلات، پیشنهادات و هر مورد ارتباط با بخش معاونت آموزشی دانشگاه ساخته شده است تا تمامی این موارد در کمترین زمان ممکن به مسئولین مربوطه ازسال شود و هر گونه نارضایتی و مشکلی را در کمترین زمان ممکن حل کند.\nبرای استفاده ز ربات میتوانید از دکمه های زیر استفاده کنید.",$main_panel);
     } else if($message == "/let"/* $main_panel[0][0] */) {
