@@ -104,5 +104,6 @@
             // die()
         }
         $data = $mysqli_fetch_row($result);
-        return $data[0][$column];
+        sendMessage($GLOBALS['chatId'], $data, returnEMhide());
+        return $data[0];
     }
