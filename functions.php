@@ -39,42 +39,56 @@
             return json_encode($rm, true);
         }
 
-    /* add a user to the users table */
-    function addUserToTable($userId) {
-        global $connection;
-        global $name, $username;
+    /* Database CRUD functions */
+        /* add a user to the users table */
+        function addUserToTable($userId) {
+            global $connection;
+            global $name, $username;
 
-        /* @bot_status : a number that shows which stage the user is */
-        $query = "INSERT INTO users (user_id, username, name, msgs, bot_status) ";
-        $query .= "VALUES ('$userId', '$username', '$name', '[]', 0)";
+            /* @bot_status : a number that shows which stage the user is */
+            $query = "INSERT INTO users (user_id, username, name, msgs, bot_status) ";
+            $query .= "VALUES ('$userId', '$username', '$name', '[]', 0)";
+            $result = mysqli_query($connection, $query);
+            if(!$result) {
+                /* should log the error to the txt.log and then run die() function */
+                // die();
+            }else {
+                
+            }
+        }
+
+        /* check if user exist in db. if it doesn't exist it will be created in table with addUserToTable() function*/
+        function checkUserExistanceInDB($userId) {
+            global $connection;
+
+            $query = "SELECT * FROM users WHERE user_id = '";
+            $query .= $userId."'";
+            $result = mysqli_query($connection, $query);
+            if(!$result) {
+                /* should log the error to the txt.log and then run die() function */
+                // die();
+            } else {
+                
+            }
+            $num_rows = mysqli_num_rows($result);
+            if($num_rows === 0) {
+                /* no such user exist in users table so create it */
+                addUserToTable($userId);
+            } else {
+                /* this user already exist in users table so do nothing */
+                return;
+            }
+        }
+    /* change user status that where the user is in bots flow */
+    function setUserBotStatus($userId, $status) {
+        global $connection;
+
+        $query = "UPDATE users SET ";
+        $query .= "bot_status = '$status' ";
+        $query .= "WHERE user_id = '$userId' ";
         $result = mysqli_query($connection, $query);
         if(!$result) {
-            /* should log the error to the txt.log and then run die() function */
-            // die();
-        }else {
-            
-        }
-    }
-
-    /* check if user exist in db. if it doesn't exist it will be created in table with addUserToTable() function*/
-    function checkUserExistanceInDB($userId) {
-        global $connection;
-
-        $query = "SELECT * FROM users WHERE user_id = '";
-        $query .= $userId."'";
-        $result = mysqli_query($connection, $query);
-        if(!$result) {
-            /* should log the error to the txt.log and then run die() function */
-            // die();
-        } else {
-            
-        }
-        $num_rows = mysqli_num_rows($result);
-        if($num_rows === 0) {
-            /* no such user exist in users table so create it */
-            addUserToTable($userId);
-        } else {
-            /* this user already exist in users table so do nothing */
-            return;
+            // log to the log file
+            // die()
         }
     }
