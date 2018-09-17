@@ -24,7 +24,17 @@
     if($message === "/start") {
         sendMessage($chatId, "به ربات ثبت شکایت و پیشنهاد خوش آمدید.\n این ربات برای ارسال تمامی مشکلات، پیشنهادات و هر مورد ارتباط با بخش معاونت آموزشی دانشگاه ساخته شده است تا تمامی این موارد در کمترین زمان ممکن به مسئولین مربوطه ازسال شود و هر گونه نارضایتی و مشکلی را در کمترین زمان ممکن حل کند.\nبرای استفاده ز ربات میتوانید از دکمه های زیر استفاده کنید.", returnEM($main_panel));
     } else if($message === $main_panel[0][0]) {
-        sendMessage($chatId, "$main_panel[0][0] was clicked.", returnEMhide());
+        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+    } else if($message === $mail_panel[0][1]) {
+        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+    } else if($message === $mail_panel[0][2]) {
+        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+    } else if($message === $main_panel[1][0]) {
+        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+    } else if($message === $mail_panel[1][1]) {
+        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
+    } else if($message === $mail_panel[1][2]) {
+        sendMessage($chatId, $main_panel[0][0]." was clicked.", returnEMhide());
     }
 
     // sendMessageReplyTo($chatId, "hello", returnEMhide(), $messageId);
