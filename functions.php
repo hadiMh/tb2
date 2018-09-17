@@ -12,7 +12,7 @@
             file_get_contents($url);
         }
 
-        function sendMessageToCurrentUser($message, $r) {
+        function ($message, $r) {
             global $chatId;
             $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r;
             file_get_contents($url);
