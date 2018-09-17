@@ -37,7 +37,7 @@
 
         sendMessage($chatId, "88", returnEMhide());
         /* @bot_status : a number that shows which stage the user is */
-        $query = "INSERT INTO users (user_id, username, name, msg, bot_status) ";
+        $query = "INSERT INTO users (user_id, username, name, msgs, bot_status) ";
         $query .= "VALUES ('$userId', '$username', '$name', '[]', 0)";
         sendMessage($chatId, "99", returnEMhide());
         $result = mysqli_query($connection, $query);
