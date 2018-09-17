@@ -22,8 +22,9 @@
     $message = $update["message"]["text"];
     $messageId = $update["message"]["message_id"];
 
+    sendMessageToCurrentUser("0", returnEMhide());
     checkUserExistanceInDB($userId);
-
+    sendMessageToCurrentUser("-1", returnEMhide());
     if($message === "/start") {
         sendMessageToCurrentUser("به ربات ثبت شکایت و پیشنهاد خوش آمدید.\n این ربات برای ارسال تمامی مشکلات، پیشنهادات و هر مورد ارتباط با بخش معاونت آموزشی دانشگاه ساخته شده است تا تمامی این موارد در کمترین زمان ممکن به مسئولین مربوطه ازسال شود و هر گونه نارضایتی و مشکلی را در کمترین زمان ممکن حل کند.\nبرای استفاده ز ربات میتوانید از دکمه های زیر استفاده کنید.",$main_panel);
     } else if($message == $main_panel[0][0]) {
