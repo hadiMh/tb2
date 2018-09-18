@@ -137,7 +137,7 @@
         "; 
 
         $msgsJson = getUserMsg($userId);
-        $msgsArray = json_decode($msgsJson);
+        $msgsArray = json_decode($msgsJson, true);
         array_push($msgsArray, $sampleJson);
         $msgsNewJson = json_encode($msgsArray);
         error_log("MSGSNEWJSON:::::::::::: $msgsNewJson");
