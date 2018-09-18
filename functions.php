@@ -143,7 +143,7 @@
         error_log("MSGSNEWJSON:::::::::::: $msgsNewJson");
         $query = "UPDATE users SET ";
         $query .= "msgs = $msgsNewJson ";
-        $query .= "WHERE user_id = $userId";
+        $query .= "WHERE user_id = '$userId'";
         error_log("QUERY:::::::::::: $query");
         $result = mysqli_query($connection, $query);
         error_log("result:::::::::::: ". print_r($result, true));
