@@ -140,7 +140,6 @@
         $msgsArray = json_decode($msgsJson);
         array_push($msgsArray, $sampleJson);
         $msgsNewJson = json_encode($msgsArray);
-        $msgsNewJson = mysqli_real_escape_string($msgsNewJson);
         error_log("MSGSNEWJSON:::::::::::: $msgsNewJson");
         $query = "UPDATE users SET ";
         $query .= "msgs = \"".$msgsNewJson."\" ";
