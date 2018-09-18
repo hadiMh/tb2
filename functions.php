@@ -138,7 +138,7 @@
 
         $msgsJson = getUserMsg($userId);
         $msgsJson = substr($msgsJson, 0, -1);
-        if(strlen($smgsJson) < 5) {
+        if(strlen($smgsJson) > 5) {
             $msgsJson .= ',';
         }
         $msgsJson .= $sampleJson;
