@@ -80,77 +80,78 @@
             }
         }
     /* change user status that where the user is in bots flow */
-    function setUserColumnData($userId, $column, $data) {
-        global $connection;
+        function setUserColumnData($userId, $column, $data) {
+            global $connection;
 
-        $query = "UPDATE users SET ";
-        $query .= "$column = '$data' ";
-        $query .= "WHERE user_id = '$userId' ";
-        $result = mysqli_query($connection, $query);
-        if(!$result) {
-            // log to the log file
-            // die()
-        }
-    }
-
-    function getUserColumnData($userId, $column) {
-        global $connection;
-
-        $query = "SELECT $column FROM users ";
-        $query .= "WHERE user_id = '$userId' ";
-        $result = mysqli_query($connection, $query);
-        if(!$result) {
-            // log to log file
-            // die()
-        }
-        $data = mysqli_fetch_assoc($result);
-
-        return $data[$column];
-    }
-
-    function getUserMsg($userId) {
-        global $connection;
-
-        $query = "SELECT msgs FROM users ";
-        $query .= "WHERE user_id = $userId";
-        $result = mysqli_query($connection, $query);
-
-        if(!$result) {
-            // log the error in the log file
-            // die();
-        }
-
-        $row = mysqli_fetch_assoc($result);
-        return $row['msgs'];
-    }
-
-    function saveUserMsg($userId, $msgText) {
-        global $connection;
-
-        $now_date_time = date("Y-m-d H:i:s");
-        $sampleJson = "
-            {
-                'text' : '$msgText',
-                'date' : '$now_date_time',
-                'status' : '0'
+            $query = "UPDATE users SET ";
+            $query .= "$column = '$data' ";
+            $query .= "WHERE user_id = '$userId' ";
+            $result = mysqli_query($connection, $query);
+            if(!$result) {
+                // log to the log file
+                // die()
             }
-        "; 
+        }
 
-        $msgsJson = getUserMsg($userId);
-        $msgsJson = substr($msgsJson, 0, -1);
-        if(strlen($msgsJson) > 5) {
-            $msgsJson .= ',';
+        /* get any data from a user row */
+        function getUserColumnData($userId, $column) {
+            global $connection;
+
+            $query = "SELECT $column FROM users ";
+            $query .= "WHERE user_id = '$userId' ";
+            $result = mysqli_query($connection, $query);
+            if(!$result) {
+                // log to log file
+                // die()
+            }
+            $data = mysqli_fetch_assoc($result);
+
+            return $data[$column];
         }
-        $msgsJson .= $sampleJson;
-        $msgsJson .= "]";
-        $msgsJson = str_replace(" ","",$msgsJson);
-        $msgsJson = str_replace("\n","",$msgsJson);
-        $query = "UPDATE users SET ";
-        $query .= "msgs = \"".$msgsJson."\" ";
-        $query .= "WHERE user_id = '$userId'";
-        $result = mysqli_query($connection, $query);
-        if(!$result) {
-            // log the error in the log file
-            // die();
+
+        function getUserMsg($userId) {
+            global $connection;
+
+            $query = "SELECT msgs FROM users ";
+            $query .= "WHERE user_id = $userId";
+            $result = mysqli_query($connection, $query);
+
+            if(!$result) {
+                // log the error in the log file
+                // die();
+            }
+
+            $row = mysqli_fetch_assoc($result);
+            return $row['msgs'];
         }
-    }
+
+        function saveUserMsg($userId, $msgText) {
+            global $connection;
+
+            $now_date_time = date("Y-m-d H:i:s");
+            $sampleJson = '
+                {
+                    "text" : "$msgText",
+                    "date" : "$now_date_time",
+                    "status" : "0"
+                }
+            '; 
+
+            $msgsJson = getUserMsg($userId);
+            $msgsJson = substr($msgsJson, 0, -1);
+            if(strlen($msgsJson) > 5) {
+                $msgsJson .= ',';
+            }
+            $msgsJson .= $sampleJson;
+            $msgsJson .= "]";
+            $msgsJson = str_replace(" ","",$msgsJson);
+            $msgsJson = str_replace("\n","",$msgsJson);
+            $query = "UPDATE users SET ";
+            $query .= "msgs = \"".$msgsJson."\" ";
+            $query .= "WHERE user_id = '$userId'";
+            $result = mysqli_query($connection, $query);
+            if(!$result) {
+                // log the error in the log file
+                // die();
+            }
+        }
