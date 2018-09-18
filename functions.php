@@ -131,8 +131,8 @@
             $now_date_time = date("Y-m-d H:i:s");
             $sampleJson = '
                 {
-                    "text" : "$msgText",
-                    "date" : "$now_date_time",
+                    "text" : "'.$msgText.'",
+                    "date" : "'.$now_date_time.'",
                     "status" : "0"
                 }
             '; 
