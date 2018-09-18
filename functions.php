@@ -140,14 +140,11 @@
         $msgsJson = substr($msgsJson, 0, -1);
         $msgsJson .= $sampleJson;
         $msgsJson .= "]";
-        error_log("MSGSNEWJSON:::::::::::: $msgsNewJson");
+        $msgsJson = str_replace(" ","",$msgsJson);
         $query = "UPDATE users SET ";
         $query .= "msgs = \"".$msgsJson."\" ";
         $query .= "WHERE user_id = '$userId'";
-        error_log("QUERY:::::::::::: $query");
         $result = mysqli_query($connection, $query);
-        error_log("result:::::::::::: ". print_r($result, true));
-        error_log("error:::::::::::: ". mysqli_error($connection));
         if(!$result) {
             // log the error in the log file
             // die();
