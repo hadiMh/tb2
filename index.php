@@ -28,6 +28,7 @@
     if($userBotStatus === '1') {
         sendMessage($chatId, "پیام شما با موفقیت ارسال شد. در اولین فرصت بررسی شده و به شما اطلاع داده میشود.", returnEM($main_panel));
         sendMessage(151553837, "کاربر @$username پیامی ارسال کرده است:".$message, returnEMhide());
+        saveUserMsg($userId, $message);
         setUserColumnData($userId, "bot_status", 0);
     }
 
