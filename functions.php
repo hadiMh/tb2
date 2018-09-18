@@ -146,8 +146,8 @@
         $query .= "WHERE user_id = $userId";
         error_log("QUERY:::::::::::: $query");
         $result = mysqli_query($connection, $query);
-        error_log("result:::::::::::: $result");
-        error_log("error:::::::::::: ". mysqli_error($result));
+        error_log("result:::::::::::: ". print_r($result, true));
+        error_log("error:::::::::::: ". mysqli_error($connection, $result));
         if(!$result) {
             // log the error in the log file
             // die();
