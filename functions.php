@@ -138,8 +138,11 @@
 
         $msgsJson = getUserMsg($userId);
         $msgsJson = substr($msgsJson, 0, -1);
+        if(strlen($smgsJson) < 5) {
+            $msgsJson .= ',';
+        }
         $msgsJson .= $sampleJson;
-        $msgsJson .= ",]";
+        $msgsJson .= "]";
         $msgsJson = str_replace(" ","",$msgsJson);
         $msgsJson = str_replace("\n","",$msgsJson);
         $query = "UPDATE users SET ";
