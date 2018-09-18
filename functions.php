@@ -107,3 +107,41 @@
 
         return $data[$column];
     }
+
+    function getUserMsg($userId) {
+        global $connection;
+
+        $query = "SELECT msgs FROM users ";
+        $query .= "WHERE user_id = $userId";
+        $result = mysqli_query($connection, $query);
+
+        if(!$result) {
+            // log the error in the log file
+            // die();
+        }
+
+        $row = mysqli_fetch_assoc($result);
+        return $row['msgs'];
+    }
+
+    function saveUserMsg($userId, $msgText) {
+        global $connection;
+
+        $now_date_time = date("Y-m-d H:i:s");
+        $sampleJson = "
+            {
+                'text' : '$msgText',
+                'date' : '$now_date_time',
+                'status' : '0'
+            }
+        "; 
+
+        $msgsJson = getUserMsg($userId);
+        $msgsArray = json_decode($msgsJson);
+        array_push($msgsArray, $sampleJson);
+        $msgsNewJson = json_encode($msgsArray);
+        error_log("MSGSNEWJSON:::::::::::: $msgsNewJson");
+        $query = "UPDATE users SET ";
+        $query .= "msgs = $msgsNewJson ";
+        $query .= "WHERE user_id = $userId";
+    }

@@ -23,6 +23,8 @@
 
     /* check if user is in a bot status */
     $userBotStatus = getUserColumnData($userId, "bot_status");
+
+    /* this status means the user is sending a critical message */
     if($userBotStatus === '1') {
         sendMessage($chatId, "پیام شما با موفقیت ارسال شد. در اولین فرصت بررسی شده و به شما اطلاع داده میشود.", returnEM($main_panel));
         sendMessage(151553837, "کاربر @$username پیامی ارسال کرده است:".$message, returnEMhide());
