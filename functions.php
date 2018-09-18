@@ -137,12 +137,12 @@
         "; 
 
         $msgsJson = getUserMsg($userId);
-        $msgsArray = json_decode($msgsJson, true);
-        array_push($msgsArray, $sampleJson);
-        $msgsNewJson = json_encode($msgsArray);
+        $msgsJson = substr($msgsJson, 0, -1);
+        $msgsJson .= $sampleJson;
+        $msgsJson .= "]";
         error_log("MSGSNEWJSON:::::::::::: $msgsNewJson");
         $query = "UPDATE users SET ";
-        $query .= "msgs = \""."hhelo"."\" ";
+        $query .= "msgs = \"".$msgsJson."\" ";
         $query .= "WHERE user_id = '$userId'";
         error_log("QUERY:::::::::::: $query");
         $result = mysqli_query($connection, $query);
