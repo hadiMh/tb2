@@ -140,9 +140,10 @@
         $msgsArray = json_decode($msgsJson);
         array_push($msgsArray, $sampleJson);
         $msgsNewJson = json_encode($msgsArray);
+        $msgsNewJson = mysql_real_escape_string($msgsNewJson);
         error_log("MSGSNEWJSON:::::::::::: $msgsNewJson");
         $query = "UPDATE users SET ";
-        $query .= "msgs = \"$msgsNewJson\" ";
+        $query .= "msgs = $msgsNewJson ";
         $query .= "WHERE user_id = '$userId'";
         error_log("QUERY:::::::::::: $query");
         $result = mysqli_query($connection, $query);
