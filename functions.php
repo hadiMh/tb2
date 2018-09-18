@@ -141,6 +141,7 @@
         $msgsJson .= $sampleJson;
         $msgsJson .= ",]";
         $msgsJson = str_replace(" ","",$msgsJson);
+        $msgsJson = str_replace("\n","",$msgsJson);
         $query = "UPDATE users SET ";
         $query .= "msgs = \"".$msgsJson."\" ";
         $query .= "WHERE user_id = '$userId'";
