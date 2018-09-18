@@ -139,10 +139,10 @@
         $msgsJson = getUserMsg($userId);
         $msgsJson = substr($msgsJson, 0, -1);
         $msgsJson .= $sampleJson;
-        $msgsJson .= "]";
+        $msgsJson .= ",]";
         $msgsJson = str_replace(" ","",$msgsJson);
         $query = "UPDATE users SET ";
-        $query .= "msgs = \"".$msgsJson.",\" ";
+        $query .= "msgs = \"".$msgsJson."\" ";
         $query .= "WHERE user_id = '$userId'";
         $result = mysqli_query($connection, $query);
         if(!$result) {
