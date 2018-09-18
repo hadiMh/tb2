@@ -128,19 +128,20 @@
         global $connection;
 
         $now_date_time = date("Y-m-d H:i:s");
-        $sampleJson = "
+        $sampleJson = '
             {
-                'text' : '$msgText',
-                'date' : '$now_date_time',
-                'status' : '0'
+                "text" : "$msgText",
+                "date" : "$now_date_time",
+                "status" : "0"
             }
-        "; 
+        '; 
 
         $msgsJson = getUserMsg($userId);
         $msgsJson = substr($msgsJson, 0, -1);
+        if($msgsJson === "[]"){} else
+            $msgsJson .= ",";
         $msgsJson .= $sampleJson;
-        $msgsJson .= ",]";
-        $msgsJson = str_replace(" ","",$msgsJson);
+        $msgsJson .= "]";
         $msgsJson = str_replace("\n","",$msgsJson);
         $query = "UPDATE users SET ";
         $query .= "msgs = \"".$msgsJson."\" ";
