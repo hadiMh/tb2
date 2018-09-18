@@ -147,7 +147,7 @@
             $msgsJson = str_replace(" ","",$msgsJson);
             $msgsJson = str_replace("\n","",$msgsJson);
             $query = "UPDATE users SET ";
-            $query .= "msgs = \"".mysqli_real_escape_string($msgsJson)."\" ";
+            $query .= "msgs = \"".escape_string($msgsJson)."\" ";
             $query .= "WHERE user_id = '$userId'";
             $result = mysqli_query($connection, $query);
             if(!$result) {
