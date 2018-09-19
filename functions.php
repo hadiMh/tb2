@@ -128,7 +128,8 @@
         function saveUserMsg($userId, $msgText, $msgSubject) {
             global $connection;
 
-            $now_date_time = date("Y-m-d H:i:s");
+            $timezone  = 4.5;
+            $now_date_time = gmdate("Y/m/j H:i:s", time() + 3600*($timezone+date("I"))); 
             $sampleJson = '{"subject" : "'.$msgSubject.'","text" : "'.$msgText.'","date" : "'.$now_date_time.'","status" : "0"}'; 
 
             $msgsJson = getUserMsg($userId);
