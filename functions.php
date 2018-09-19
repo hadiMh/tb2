@@ -129,14 +129,7 @@
             global $connection;
 
             $now_date_time = date("Y-m-d H:i:s");
-            $sampleJson = '
-                {
-                    "subject" : "'.$msgSubject.'",
-                    "text" : "'.$msgText.'",
-                    "date" : "'.$now_date_time.'",
-                    "status" : "0"
-                }
-            '; 
+            $sampleJson = '{"subject" : "'.$msgSubject.'","text" : "'.$msgText.'","date" : "'.$now_date_time.'","status" : "0"}'; 
 
             $msgsJson = getUserMsg($userId);
             $msgsJson = substr($msgsJson, 0, -1);
