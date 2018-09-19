@@ -30,6 +30,11 @@
         sendMessage(101863453, "کاربر @$username پیامی ارسال کرده است:\n".$message, returnEM($main_panel));
         saveUserMsg($userId, $message, $main_panel[0][0]);
         setUserColumnData($userId, "bot_status", 0);
+    } else if($userBotStatus === '2') {
+        sendMessage($chatId, "پیام شما با موفقیت ارسال شد. در اولین فرصت بررسی شده و به شما اطلاع داده میشود.", returnEM($main_panel));
+        sendMessage(101863453, "کاربر @$username پیامی ارسال کرده است:\n".$message, returnEM($main_panel));
+        saveUserMsg($userId, $message, $main_panel[0][1]);
+        setUserColumnData($userId, "bot_status", 0);
     }
 
     if($message === "/start") {
@@ -38,6 +43,8 @@
         setUserColumnData($userId, "bot_status", 1);
         sendMessage($chatId, "پیام خود را در قالب یک پیام ارسال کنید.", returnEMhide());
     } else if($message === $main_panel[0][1]) {
+        setUserColumnData($userId, "bot_status", 2);
+        sendMessage($chatId, "پیام خود را در قالب یک پیام ارسال کنید.", returnEMhide());
         sendMessage($chatId, $main_panel[0][1]." was clicked.", returnEMhide());
     } else if($message === $main_panel[0][2]) {
         sendMessage($chatId, $main_panel[0][2]." was clicked.", returnEMhide());
